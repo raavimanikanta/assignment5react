@@ -8,10 +8,8 @@ import { Link } from 'react-router-dom';
   let navigate=useNavigate();
   const [students,setstudents]=useContext(studentcontext)
   let  {id}=useParams();
- 
- 
-   
-let [studentsAdd ,setStudentsAdd]=useState({
+
+ let [studentsAdd ,setStudentsAdd]=useState({
         id:"",
         Name:"",
         Age:"",
@@ -19,8 +17,7 @@ let [studentsAdd ,setStudentsAdd]=useState({
         Batch:"",
   })
 
- 
-useEffect(() => {
+  useEffect(() => {
   students.forEach((studentsAdd) => {
       if (studentsAdd.id === id) {
           setStudentsAdd({
