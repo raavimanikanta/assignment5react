@@ -1,0 +1,19 @@
+name: New Relic Browser agent installation
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install New Relic Browser agent
+        run: |
+          NR_LICENSE_KEY=${{ secrets.NEW_RELIC_LICENSE_KEY }}
+          curl -s https://download.newrelic.com/nr-browser-agent/current/newrelic-browser-script.min.js | sed "s/NREUM/${NR_LICENSE_KEY}/g" > public/newrelic-browser.js
